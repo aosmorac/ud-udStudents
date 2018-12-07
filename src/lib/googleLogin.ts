@@ -2,23 +2,22 @@ import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { GooglePlus } from '@ionic-native/google-plus';
-import {TabsPage} from "../pages/tabs/tabs";
+import {Injectable} from "@angular/core";
 
-export class GoogleLogin2
+@Injectable()
+export class GoogleLogin
 {
-  private afAuth: AngularFireAuth;
-  private gplus: GooglePlus;
-
   user: firebase.User;
   webClientId;
 
-  constructor()
+  constructor(private afAuth: AngularFireAuth,
+              private gplus: GooglePlus)
   {
     this.webClientId = '118660825580-771ahob3qvi5hmculgnbil13o8ctg045.apps.googleusercontent.com';
   }
 
 
-  async nativeLogin()
+  async nativeLogin(): Promise<void>
   {
     try {
 
@@ -28,16 +27,12 @@ export class GoogleLogin2
         'scopes': 'profile email'
       });
 
-      this.afAuth.auth.signInWithCredential(
+      this.user = await this.afAuth.auth.signInWithCredential(
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
-      ).then(user => {
-        this.user = user;
-        return true;
-      });
+      );
 
     } catch(err) {
       console.log(err);
-      return false;
     }
   }
 
@@ -55,9 +50,12 @@ export class GoogleLogin2
   }
 
   signOut() {
-    this.afAuth.auth.signOut().then(() => {
+    try {
       this.user = null;
-    });
+      this.afAuth.auth.signOut();
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   getUser()

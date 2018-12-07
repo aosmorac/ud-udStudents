@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { GoogleLoginComponent } from '../components/google-login/google-login';
+import { GoogleLogin } from '../lib/googleLogin';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -18,6 +19,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { GooglePlus } from '@ionic-native/google-plus';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAQgm2P5vBD4XiYDLe1JHjTRHRku0NHTCM",
@@ -58,7 +60,8 @@ const firebaseConfig = {
     GooglePlus,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleLogin
   ]
 })
 export class AppModule {}
