@@ -1,3 +1,5 @@
+import { environment as ENV } from '../environments/environment' ;
+
 import * as firebase from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -13,7 +15,7 @@ export class GoogleLogin
   constructor(private afAuth: AngularFireAuth,
               private gplus: GooglePlus)
   {
-    this.webClientId = '118660825580-771ahob3qvi5hmculgnbil13o8ctg045.apps.googleusercontent.com';
+    this.webClientId = ENV.google.webClientId;
   }
 
 

@@ -1,3 +1,5 @@
+import { environment as ENV } from '../environments/environment' ;
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -20,16 +22,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { GooglePlus } from '@ionic-native/google-plus';
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAQgm2P5vBD4XiYDLe1JHjTRHRku0NHTCM",
-  authDomain: "udstudents-828d8.firebaseapp.com",
-  databaseURL: "https://udstudents-828d8.firebaseio.com",
-  projectId: "udstudents-828d8",
-  storageBucket: "udstudents-828d8.appspot.com",
-  messagingSenderId: "118660825580"
-};
-
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +35,7 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(ENV.firebaseConfig),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
