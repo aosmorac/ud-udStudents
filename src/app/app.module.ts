@@ -6,8 +6,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { GoogleLoginComponent } from '../components/google-login/google-login';
-import { GoogleLogin } from '../lib/googleLogin';
+import { Auth } from '../lib/auth';
 
+import { HeaderMenuComponent } from '../components/header-menu/header-menu';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -25,6 +26,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 @NgModule({
   declarations: [
     MyApp,
+    HeaderMenuComponent,
     AboutPage,
     ContactPage,
     HomePage,
@@ -53,7 +55,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GoogleLogin
+    Auth
   ]
 })
 export class AppModule {}

@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { GoogleLoginComponent } from './google-login/google-login';
+import { HeaderMenuComponent } from './header-menu/header-menu';
 @NgModule({
-	declarations: [GoogleLoginComponent],
+	declarations: [GoogleLoginComponent,
+    HeaderMenuComponent,
+    HeaderMenuComponent],
 	imports: [],
-	exports: [GoogleLoginComponent]
+	exports: [GoogleLoginComponent,
+    HeaderMenuComponent,
+    HeaderMenuComponent]
 })
 export class ComponentsModule {}

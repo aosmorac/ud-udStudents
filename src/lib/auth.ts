@@ -6,35 +6,42 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {Injectable} from "@angular/core";
 
+import {UdStudentsApi} from '../lib/udStudentsApi';
+
 @Injectable()
-export class GoogleLogin
+export class Auth
 {
-  user: firebase.User;
+  user: object;
   webClientId;
+  api;
 
   constructor(private afAuth: AngularFireAuth,
               private gplus: GooglePlus)
   {
     this.webClientId = ENV.google.webClientId;
+    this.api = new UdStudentsApi();
   }
 
 
-  async nativeLogin(): Promise<void>
+  async nativeLogin(): Promise<boolean>
   {
     try {
-
       const gplusUser = await this.gplus.login({
         'webClientId': this.webClientId,
         'offline': true,
         'scopes': 'profile email'
       });
 
-      this.user = await this.afAuth.auth.signInWithCredential(
+      return this.afAuth.auth.signInWithCredential(
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
-      );
+      ).then( async data => {
+        this.user = await this.api.getUserLogged(data.email, data.uid);
+        return true;
+      });
 
     } catch(err) {
       console.log(err);
+      return false;
     }
   }
 
@@ -48,13 +55,14 @@ export class GoogleLogin
     } catch(err) {
       console.log(err)
     }
-
   }
+
 
   signOut() {
     try {
-      this.user = null;
-      this.afAuth.auth.signOut();
+      console.log(this.user);
+      // this.user = null;
+      // this.afAuth.auth.signOut();
     } catch(err) {
       console.log(err)
     }
