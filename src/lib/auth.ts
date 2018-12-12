@@ -8,6 +8,8 @@ import {Injectable} from "@angular/core";
 
 import {UdStudentsApi} from '../lib/udStudentsApi';
 
+import {Curriculum} from "./curriculum";
+
 @Injectable()
 export class Auth
 {
@@ -36,7 +38,8 @@ export class Auth
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
       ).then( async data => {
         this.user = await this.api.getUserLogged(data.email, data.uid);
-        return true;
+        let curriculum = new Curriculum();
+        return curriculum.downloadCurriculum();
       });
 
     } catch(err) {
@@ -60,9 +63,8 @@ export class Auth
 
   signOut() {
     try {
-      console.log(this.user);
-      // this.user = null;
-      // this.afAuth.auth.signOut();
+      this.user = null;
+      this.afAuth.auth.signOut();
     } catch(err) {
       console.log(err)
     }

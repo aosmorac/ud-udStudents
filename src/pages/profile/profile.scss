@@ -1,0 +1,24 @@
+page-profile {
+
+  .toolbar-background {
+    background:none;
+  }
+
+  .profile-header {
+    text-align: center;
+
+    ion-avatar,
+    ion-avatar > ion-img{
+      border-radius:50%;
+      height:12rem;
+      width:12rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+  }
+
+
+
+
+}

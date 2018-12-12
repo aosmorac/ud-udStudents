@@ -9,11 +9,11 @@ import { GoogleLoginComponent } from '../components/google-login/google-login';
 import { Auth } from '../lib/auth';
 
 import { HeaderMenuComponent } from '../components/header-menu/header-menu';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
+import { PensumPage} from "../pages/pensum/pensum";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,11 +27,11 @@ import { GooglePlus } from '@ionic-native/google-plus';
   declarations: [
     MyApp,
     HeaderMenuComponent,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
     LoginPage,
+    ProfilePage,
+    PensumPage,
     GoogleLoginComponent
   ],
   imports: [
@@ -43,11 +43,11 @@ import { GooglePlus } from '@ionic-native/google-plus';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage,
     LoginPage,
+    ProfilePage,
+    PensumPage,
     GoogleLoginComponent
   ],
   providers: [
