@@ -5,6 +5,11 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border padding >
+  <div float-left>
+    {{pensumProgram.faculty}}<br>
+    <strong>{{pensumProgram.career}}</strong> <br>
+    PENSUM: {{pensumProgram.credits}} creditos
+  </div>
   <ion-buttons right>
     <button ion-button icon-only menuToggle>
       <ion-icon name='menu'></ion-icon>
@@ -14,6 +19,27 @@
 
 
 <ion-content padding>
+
+  <ion-item ion-fixed>
+    <ion-label>Materias</ion-label>
+    <ion-select [(ngModel)]="currentPensumLevel" (ngModelChange)="updateLevel()">
+      <ion-option *ngFor="let level of pensumProgram.levels" [value]="level.name">Nivel {{level.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <div class="blank-space"></div>
+
+  <ion-card *ngFor="let subject of subjects">
+    <ion-item text-wrap>
+      <h2>{{subject.name}}</h2>
+      <p>{{subject.type.name}}</p>
+    </ion-item>
+    <ion-item>
+      <span item-start><strong>Creditos: </strong>{{subject.creditos}}</span>
+      <span *ngIf="subject.completed" icon-start clear item-end>Cursada</span>
+      <span *ngIf="!subject.completed" icon-start clear item-end>Sin Cursar</span>
+    </ion-item>
+  </ion-card>
 
   <button ion-button (tap)="printCurriculum()">
     CL Pensum

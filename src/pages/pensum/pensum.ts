@@ -17,25 +17,43 @@ import { Curriculum } from "../../lib/curriculum";
 export class PensumPage {
 
   curriculum: Curriculum;
+  pensumProgram: object;
+  subjects:object;
+
+  currentPensumLevel;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams)
   {
+    this.currentPensumLevel = 1;
+
     this.curriculum = new Curriculum();
+    this.curriculum.downloadCurriculum().then(downloaded => {
+      this.pensumProgram = this.curriculum.getPensum();
+      this.subjects = this.curriculum.getSubjectsByLevel(this.currentPensumLevel);
+    });
+
   }
 
   printCurriculum()
   {
-    console.log(this.curriculum);
-    console.log(this.curriculum.getPensum());
+    console.log(this.pensumProgram);
   }
 
   printSubjects()
   {
-    console.log(this.curriculum.getSubjects());
+    console.log(this.subjects);
+  }
+
+  updateLevel()
+  {
+    this.subjects = this.curriculum.getSubjectsByLevel(this.currentPensumLevel);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PensumPage');
   }
+
+
 
 }

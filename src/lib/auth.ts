@@ -38,8 +38,7 @@ export class Auth
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
       ).then( async data => {
         this.user = await this.api.getUserLogged(data.email, data.uid);
-        let curriculum = new Curriculum();
-        return curriculum.downloadCurriculum();
+        return true;
       });
 
     } catch(err) {

@@ -16,10 +16,8 @@ export class Subjects
   {
     try {
 
-      return this.api.getPensumSubjects().then(data => {
-        this.subjects = data;
-        return true;
-      });
+      this.subjects = this.api.getPensumSubjects();
+      return true;
 
     } catch(err) {
 
@@ -29,7 +27,17 @@ export class Subjects
     }
   }
 
-  getSubjects()
+  getSubjects(ids)
+  {
+    let subjectsFiltered = [];
+
+    ids.forEach(id => {
+      subjectsFiltered.push(this.subjects[id]);
+    });
+    return subjectsFiltered;
+  }
+
+  getAllSubjects()
   {
     return this.subjects;
   }

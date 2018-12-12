@@ -18,68 +18,79 @@ export class UdStudentsApi
   pensumTest = {
      'faculty': 'Ingeniería',
      'career': 'Ingeniería de sistemas',
-     'levels': {
-       '1': {
+     'credits': 205,
+     'levels': [
+       {
+         'name': '1',
          'subjects': [
            4, 1, 2, 12, 16103, 5, 403, 40, 6
          ],
          'completed': true
        },
-       '2': {
+       {
+         'name': '2',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           1, 2, 12, 16103, 5, 403, 40, 6
          ],
          'completed': true
        },
-       '3': {
+       {
+         'name': '3',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           4, 1, 2, 12, 16103, 5, 403
          ],
          'completed': true
        },
-       '4': {
+       {
+         'name': '4',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           12, 16103, 5, 403, 40, 6
          ],
          'completed': true
        },
-       '5': {
+       {
+         'name': '5',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           4, 1, 2, 12, 16103
          ],
          'completed': true
        },
-       '6': {
+       {
+         'name': '6',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           5, 403, 40, 6
          ],
          'completed': true
        },
-       '7': {
+       {
+         'name': '7',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           4, 1, 2
          ],
          'completed': false
        },
-       '8': {
+       {
+         'name': '8',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           40, 6
          ],
          'completed': false
        },
-       '9': {
+       {
+         'name': '9',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           4
          ],
          'completed': false
        },
-       '10': {
+       {
+         'name': '10',
          'subjects': [
-           4, 1, 2, 12, 16103, 5, 403, 40, 6
+           16103, 5
          ],
          'completed': false
        }
-     }
+     ]
   }
 
   subjectsTest = {
@@ -111,7 +122,7 @@ export class UdStudentsApi
         'code': 'OB',
         'name': 'Obligatorio Básico'
       },
-      'completed': true
+      'completed': false
     },
     '6': {
       'code': '6',
@@ -131,7 +142,7 @@ export class UdStudentsApi
         'code': 'OC',
         'name': 'Obligatorio Complementario'
       },
-      'completed': true
+      'completed': false
     },
     '5': {
       'code': '5',
@@ -151,7 +162,7 @@ export class UdStudentsApi
         'code': 'OC',
         'name': 'Obligatorio Complementario'
       },
-      'completed': true
+      'completed': false
     },
     '40': {
       'code': '40',

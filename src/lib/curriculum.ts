@@ -35,9 +35,27 @@ export class Curriculum
     return this.curriculum;
   }
 
+  getSubjectsByLevel(level)
+  {
+    if ('levels' in this.curriculum){
+      // @ts-ignore
+      let levelSubjects = this.curriculum.levels.find(x=>x.name == level).subjects;
+
+      if (levelSubjects){
+        return this.subjects.getSubjects(levelSubjects);
+      }else {
+        return [];
+      }
+    }
+    else {
+      return [];
+    }
+
+  }
+
   getSubjects()
   {
-    return this.subjects.getSubjects();
+    return this.subjects.getAllSubjects();
   }
 
 
