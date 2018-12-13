@@ -6,6 +6,8 @@
 -->
 <ion-header no-border padding >
   <div float-left>
+    {{user.career}}<br>
+    <strong>{{user.displayName}}</strong> <br>
     Horario
   </div>
   <ion-buttons right>
@@ -17,6 +19,31 @@
 
 <ion-content padding>
 
+  <ion-list ion-fixed class="schedule-filter">
+    <ion-item>
+      <ion-label>Hoy: {{today}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Día de la semana:</ion-label>
+      <ion-select [(ngModel)]="selectedWeekDay" (ngModelChange)="updateSelectedWeekDay()">
+        <ion-option *ngFor="let day of getAvailableDays()" [value]="day.id">{{day.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="blank-space"></div>
+
+  <ion-card *ngFor="let subjectBooked of subjects">
+    <ion-item text-wrap>
+      <h1>{{subjectBooked?.start}}</h1>
+      <h2>{{subjectBooked?.subject?.name}}</h2>
+      <p>{{subjectBooked?.subject?.type?.name}}</p>
+    </ion-item>
+    <ion-item>
+      <span item-start><strong>Creditos: </strong>{{subjectBooked?.subject?.creditos}}</span>
+    </ion-item>
+  </ion-card>
+
   <ion-item>
     <ion-label>Fecha: {{currentDate}}</ion-label>
   </ion-item>
@@ -26,5 +53,5 @@
   <ion-item>
     <ion-label>Dia: {{currentWeekDay}}</ion-label>
   </ion-item>
-  
+
 </ion-content>

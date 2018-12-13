@@ -37,6 +37,11 @@ export class Subjects
     return subjectsFiltered;
   }
 
+  getSubjectById(id)
+  {
+    return this.subjects[id];
+  }
+
   getAllSubjects()
   {
     return this.subjects;

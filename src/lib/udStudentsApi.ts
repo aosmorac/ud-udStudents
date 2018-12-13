@@ -13,7 +13,7 @@ export class UdStudentsApi
     'career': 'Ingeniería de sistemas',
     'status': 'Estudiante Matriculado',
     'pensum': '325'
-  }
+  };
 
   pensumTest = {
      'faculty': 'Ingeniería',
@@ -91,7 +91,7 @@ export class UdStudentsApi
          'completed': false
        }
      ]
-  }
+  };
 
   subjectsTest = {
      '1': {
@@ -184,7 +184,118 @@ export class UdStudentsApi
       },
       'completed': true
     }
-  }
+  };
+
+  scheduleTest = {
+    'year': 2018,
+    'period': 3,
+    'week': {
+      'Monday': {
+        '09:00:00': {
+          'subject': 12,
+          'start': '09:00:00',
+          'finish': '11:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Tuesday': {
+        '07:00:00': {
+          'subject': 12,
+          'start': '07:00:00',
+          'finish': '09:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Wednesday': {
+        '09:00:00': {
+          'subject': 12,
+          'start': '09:00:00',
+          'finish': '11:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Thursday': {
+        '09:00:00': {
+          'subject': 12,
+          'start': '09:00:00',
+          'finish': '11:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Friday': {
+        '09:00:00': {
+          'subject': 12,
+          'start': '09:00:00',
+          'finish': '11:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Saturday': {
+        '09:00:00': {
+          'subject': 12,
+          'start': '09:00:00',
+          'finish': '11:00:00'
+        },
+        '12:00:00': {
+          'subject': 2,
+          'start': '12:00:00',
+          'finish': '14:00:00'
+        },
+        '16:00:00': {
+          'subject': 4,
+          'start': '16:00:00',
+          'finish': '18:00:00'
+        }
+      },
+      'Sunday': {
+      },
+    }
+  };
 
   async saveUserGoogleId()
   {
@@ -219,6 +330,11 @@ export class UdStudentsApi
   getPensumSubjects()
   {
     return this.subjectsTest;
+  }
+
+  getStudentSchedule()
+  {
+    return this.scheduleTest;
   }
 
 
