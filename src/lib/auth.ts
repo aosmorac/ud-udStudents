@@ -37,7 +37,23 @@ export class Auth
       return this.afAuth.auth.signInWithCredential(
         firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
       ).then( async data => {
-        this.user = await this.api.getUserLogged(data.email, data.uid);
+        console.log(data);
+        // this.user = await this.api.getUserLogged(data.email, data.uid);
+        let userTest = {
+          'uid': data.uid,
+          'displayName': data.displayName,
+          'email': data.email,
+          'photoURL': data.photoURL,
+          'phoneNumber': {
+            'public': false,
+            'number': '123456'
+          },
+          'faculty': 'Ingeniería',
+          'career': 'Ingeniería de sistemas',
+          'status': 'Estudiante Matriculado',
+          'pensum': '325'
+        };
+        this.user = userTest;
         return true;
       });
 
@@ -60,13 +76,10 @@ export class Auth
   }
 
 
-  signOut() {
-    try {
-      this.user = null;
-      this.afAuth.auth.signOut();
-    } catch(err) {
-      console.log(err)
-    }
+  signOut(): Promise<void>
+  {
+    this.user = null;
+    return this.afAuth.auth.signOut();
   }
 
   getUser()

@@ -28,7 +28,6 @@ export class GoogleLoginComponent {
     if (this.platform.is('cordova')) {
       this.auth.nativeLogin().then(() => {
         this.user = this.auth.getUser();
-        console.log(this.user);
         this.navCtrl.push(TabsPage);
       });
     } else {

@@ -24,7 +24,6 @@ export class ProfilePage
               public navParams: NavParams)
   {
     this.user = this.auth.getUser();
-    console.log(this.user);
   }
 
   notifyAndUpdateIsToggled()
